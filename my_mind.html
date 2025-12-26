@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st SEM MCA Tracker</title>
+    <style>
+        /* Modern Reset & Font */
+        * { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-sizing: border-box; }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2d3436;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #0984e3;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        th {
+            background-color: #0984e3;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        tr:hover { background-color: #f1f2f6; }
+
+        /* THE FLASHING EFFECT */
+        @keyframes flash {
+            0% { background-color: #ff0000; box-shadow: 0 0 5px #ff0000; }
+            50% { background-color: #ffeb3b; box-shadow: 0 0 20px #ffeb3b; color: #000; }
+            100% { background-color: #ff0000; box-shadow: 0 0 5px #ff0000; }
+        }
+
+        .flash-reminder {
+            animation: flash-urgent 0.8s infinite;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .deadline-box {
+            animation: flash 1s infinite;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 4px;
+            color: white;
+            display: inline-block;
+        }
+        /* WORK DONE SECTION */
+        .work-done-section {
+            background: #0f3460;
+            padding: 20px;
+            border-left: 5px solid #48dbfb;
+            border-radius: 5px;
+        }
+
+        .work-done-section h3 {
+            margin-top: 0;
+            color: #55efc4;
+        }
+
+        .points-list {
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        .points-list li {
+            margin-bottom: 10px;
+        }
+        .points-list-sub {
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        .points-list-sub li {
+            margin-bottom: 10px;
+        }
+
+        .completed-tag { color: #55efc4; font-weight: bold; }
+
+        /* Status Tags */
+        .status-done {
+            background-color: #55efc4;
+            color: #357064;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .status-Pending {
+            background-color: #7b18185d;
+            color: #00ffcc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .status-pending {
+            color: #d63031;
+            font-style: italic;
+        }
+
+        .status-upcoming {
+            background-color: #ffeaa7;
+            color: #d35400;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        /* Specific row header styling */
+        .subject-name {
+            font-weight: 600;
+            color: #2d3436;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>1st SEM MCA Progress Tracker</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>CA1</th>
+                <th>Mid Term</th>
+                <th>CA2</th>
+                <th>CA3</th>
+                <th>CA4</th>
+                <th>EndTerm</th>
+                <th>Project</th>
+                <th>Seminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="subject-name">Data Structures and Algorithms</td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><small class="status-pending">Tomorrow</small></td>
+            </tr>
+            <tr>
+                <td class="subject-name">Database Systems</td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>         
+            <tr>
+                <td class="subject-name">Computer Networks and Security</td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-Pending">Tuesday</span> <br><small class="status-pending">30th</small></td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr> 
+            <tr>
+                <td class="subject-name">Data Structures and Algorithms Lab </td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="subject-name">Database Systems Lab</td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>               
+            <tr>
+                <td class="subject-name">Web Technology</td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-upcoming">31st (Wed)</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span class="status-done">DONE</span><br><small class="status-pending">Report Pending</small></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="subject-name">Advanced Python Programming </td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="subject-name">English for Employability</td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td></td>
+                <td><span class="status-done">DONE</span><br><small class="status-pending">Assessment</small></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="subject-name">Probability and Statistics</td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td><span class="status-done">COMPLETED</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>  
+        </tbody>
+    </table>
+    <br>
+    <div class="deadline-box">Prepare for CA2 Its from Monday</div>
+    <br>
+    <br>
+    <div class="work-done-section">
+        <h3>📝 Work Done Log</h3>
+        <ul class="points-list">
+            <li><b>Data Structures and Algorithms</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            </li>
+            <li><b>Database Systems</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            </li>
+            <li><b>Computer Networks and Security</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            <li><b>Data Structures and Algorithms Lab</b>
+            <ul class="points-list-sub" type="square">
+                <li>4 lab experiment wrote in the record</li>
+            </ul>
+            </li>
+            <li><b>Database Systems Lab</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            </li>
+            <li><b>Web Technology</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            </li>
+            </li>
+            <li><b>Advanced Python Programming</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            </li>
+            <li><b>English for Employability</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            </li>
+            <li><b>Probability and Statistics</b>
+            <ul class="points-list-sub" type="square">
+                <!--<li>4 lab experiment wrote in the record</li>-->
+            </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
