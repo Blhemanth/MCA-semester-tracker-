@@ -1,48 +1,47 @@
-function showSection(id) {
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.add('hidden');
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const times = ["9-10", "10-11", "11-12", "1-2", "2-3"];
+
+function createTimetable() {
+    const grid = document.getElementById("timetableGrid");
+    grid.innerHTML = "";
+
+    // Empty corner
+    grid.appendChild(createCell("", "header"));
+
+    // Day headers
+    days.forEach(day => {
+        grid.appendChild(createCell(day, "header"));
     });
-    document.getElementById(id).classList.remove('hidden');
+
+    times.forEach(time => {
+        // Time column
+        grid.appendChild(createCell(time, "time"));
+
+        days.forEach(day => {
+            const key = day + "-" + time;
+            const saved = localStorage.getItem(key) || "";
+
+            const cell = createCell(saved, "cell");
+            cell.onclick = () => editCell(cell, key);
+
+            grid.appendChild(cell);
+        });
+    });
 }
 
-/* Timetable */
-function addTimetable() {
-    let subject = document.getElementById("subject").value;
-    let time = document.getElementById("time").value;
-
-    let li = document.createElement("li");
-    li.textContent = subject + " - " + time;
-
-    document.getElementById("timetableList").appendChild(li);
+function createCell(text, className) {
+    const div = document.createElement("div");
+    div.className = className + " cell";
+    div.textContent = text;
+    return div;
 }
 
-/* Exams */
-function addExam() {
-    let exam = document.getElementById("examName").value;
-    let marks = document.getElementById("marks").value;
-
-    let li = document.createElement("li");
-    li.textContent = exam + " : " + marks;
-
-    document.getElementById("examList").appendChild(li);
+function editCell(cell, key) {
+    const subject = prompt("Enter Subject:");
+    if (subject !== null) {
+        cell.textContent = subject;
+        localStorage.setItem(key, subject);
+    }
 }
 
-/* Notes */
-function addNote() {
-    let note = document.getElementById("noteText").value;
-
-    let li = document.createElement("li");
-    li.textContent = note;
-
-    document.getElementById("noteList").appendChild(li);
-}
-
-/* Reminders */
-function addReminder() {
-    let reminder = document.getElementById("reminderText").value;
-
-    let li = document.createElement("li");
-    li.textContent = reminder;
-
-    document.getElementById("reminderList").appendChild(li);
-}
+createTimetable();

@@ -36,3 +36,28 @@ input, textarea {
     padding: 5px;
     width: 200px;
 }
+
+#timetableGrid {
+    display: grid;
+    grid-template-columns: 100px repeat(6, 1fr);
+    border: 1px solid #ccc;
+}
+
+.cell {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    min-height: 60px;
+    cursor: pointer;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+.time {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
