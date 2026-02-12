@@ -1,45 +1,39 @@
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const times = ["9-10", "10-11", "11-12", "1-2", "2-3"];
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const timeSlots = ["9-10", "10-11", "11-12", "1-2", "2-3"];
 
 function createTimetable() {
     const grid = document.getElementById("timetableGrid");
     grid.innerHTML = "";
 
-    // Empty corner
-    grid.appendChild(createCell("", "header"));
-
-    // Day headers
     days.forEach(day => {
-        grid.appendChild(createCell(day, "header"));
-    });
+        const column = document.createElement("div");
+        column.className = "day-column";
 
-    times.forEach(time => {
-        // Time column
-        grid.appendChild(createCell(time, "time"));
+        const title = document.createElement("div");
+        title.className = "day-title";
+        title.textContent = day;
+        column.appendChild(title);
 
-        days.forEach(day => {
+        timeSlots.forEach(time => {
             const key = day + "-" + time;
             const saved = localStorage.getItem(key) || "";
 
-            const cell = createCell(saved, "cell");
-            cell.onclick = () => editCell(cell, key);
+            const slot = document.createElement("div");
+            slot.className = "slot";
+            slot.textContent = saved || time;
+            slot.onclick = () => editSlot(slot, key, time);
 
-            grid.appendChild(cell);
+            column.appendChild(slot);
         });
+
+        grid.appendChild(column);
     });
 }
 
-function createCell(text, className) {
-    const div = document.createElement("div");
-    div.className = className + " cell";
-    div.textContent = text;
-    return div;
-}
-
-function editCell(cell, key) {
-    const subject = prompt("Enter Subject:");
+function editSlot(slot, key, time) {
+    const subject = prompt("Enter subject for " + time);
     if (subject !== null) {
-        cell.textContent = subject;
+        slot.textContent = subject || time;
         localStorage.setItem(key, subject);
     }
 }
