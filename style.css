@@ -1,63 +1,75 @@
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     display: flex;
+    background-color: #efe2c6;
 }
 
 .sidebar {
-    width: 200px;
-    background: #111;
-    color: white;
+    width: 220px;
+    background: #ffffff;
     padding: 20px;
     height: 100vh;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar h2 {
+    color: #f07f5a;
 }
 
 .sidebar button {
     width: 100%;
-    margin: 5px 0;
-    padding: 8px;
-    background: #333;
+    margin: 8px 0;
+    padding: 10px;
+    background: #f07f5a;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+.sidebar button:hover {
+    background: #e66a45;
 }
 
 .content {
     flex: 1;
-    padding: 20px;
+    padding: 40px;
+}
+
+.section h1 {
+    color: #f07f5a;
 }
 
 .hidden {
     display: none;
 }
 
-input, textarea {
-    margin: 5px 0;
-    padding: 5px;
-    width: 200px;
-}
+/* Timetable Grid */
 
 #timetableGrid {
     display: grid;
-    grid-template-columns: 100px repeat(6, 1fr);
-    border: 1px solid #ccc;
+    grid-template-columns: 120px repeat(6, 1fr);
+    width: 100%;
+    margin-top: 20px;
 }
 
 .cell {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
-    min-height: 60px;
+    min-height: 100px;
     cursor: pointer;
+    background-color: white;
 }
 
 .header {
-    background-color: #333;
+    background-color: #f07f5a;
     color: white;
     font-weight: bold;
 }
 
 .time {
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     font-weight: bold;
 }
