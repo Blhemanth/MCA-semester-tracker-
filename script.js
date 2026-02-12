@@ -1,119 +1,82 @@
-console.log("Academic Hub Loaded");
-
-// ============================
-// Navigation
-// ============================
-
-function showSection(sectionId) {
-    const sections = document.querySelectorAll(".section");
-
-    sections.forEach(section => {
-        section.classList.add("hidden");
-    });
-
-    const activeSection = document.getElementById(sectionId);
-    if (activeSection) {
-        activeSection.classList.remove("hidden");
-    }
-}
-
-// ============================
-// TIMETABLE (Vertical Planner)
-// ============================
-
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const timeSlots = ["9-10", "10-11", "11-12", "1-2", "2-3"];
+
+const periods = [
+    "Period 1",
+    "Period 2",
+    "Period 3",
+    "Period 4",
+    "Period 5",
+    "Period 6",
+    "Period 7"
+];
 
 function createTimetable() {
     const grid = document.getElementById("timetableGrid");
     if (!grid) return;
-    document.addEventListener("DOMContentLoaded", function() {
-    createTimetable();
-});
+
     grid.innerHTML = "";
 
     days.forEach(day => {
+
         const column = document.createElement("div");
         column.className = "day-column";
 
-        const title = document.createElement("div");
-        title.className = "day-title";
+        const title = document.createElement("h3");
         title.textContent = day;
         column.appendChild(title);
 
-        timeSlots.forEach(time => {
-            const key = day + "-" + time;
-            const saved = localStorage.getItem(key) || "";
+        periods.forEach((period, index) => {
 
-            const slot = document.createElement("div");
-            slot.className = "slot";
-            slot.textContent = saved || time;
+            const key = day + "-period-" + index;
+            const saved = JSON.parse(localStorage.getItem(key));
 
-            slot.onclick = () => {
-                const subject = prompt("Enter subject for " + day + " " + time);
-                if (subject !== null) {
-                    slot.textContent = subject || time;
-                    localStorage.setItem(key, subject);
-                }
-            };
+            const card = document.createElement("div");
+            card.className = "class-card";
 
-            column.appendChild(slot);
+            if (saved) {
+                card.innerHTML = `
+                    <h4>${saved.code} - ${saved.name}</h4>
+                    <p><strong>Faculty:</strong> ${saved.faculty}</p>
+                    <p><strong>Time:</strong> ${saved.time}</p>
+                    <p><strong>Room:</strong> ${saved.room}</p>
+                `;
+            } else {
+                card.innerHTML = `<p>${period}</p>`;
+            }
+
+            card.onclick = () => editPeriod(day, index);
+
+            column.appendChild(card);
         });
 
         grid.appendChild(column);
     });
 }
 
-// ============================
-// EXAMS
-// ============================
+function editPeriod(day, index) {
 
-function addExam() {
-    const name = document.getElementById("examName").value;
-    const marks = document.getElementById("marks").value;
+    const key = day + "-period-" + index;
 
-    if (!name || !marks) return;
+    const code = prompt("Subject Code:");
+    if (!code) return;
 
-    const li = document.createElement("li");
-    li.textContent = name + " : " + marks;
+    const name = prompt("Subject Name:");
+    if (!name) return;
 
-    document.getElementById("examList").appendChild(li);
+    const faculty = prompt("Faculty:");
+    if (!faculty) return;
 
-    document.getElementById("examName").value = "";
-    document.getElementById("marks").value = "";
+    const time = prompt("Time (e.g. 08:50 - 09:45):");
+    if (!time) return;
+
+    const room = prompt("Room / Class Code:");
+    if (!room) return;
+
+    const data = { code, name, faculty, time, room };
+
+    localStorage.setItem(key, JSON.stringify(data));
+
+    createTimetable();
 }
 
-// ============================
-// NOTES
-// ============================
-
-function addNote() {
-    const note = document.getElementById("noteText").value;
-
-    if (!note) return;
-
-    const li = document.createElement("li");
-    li.textContent = note;
-
-    document.getElementById("noteList").appendChild(li);
-    document.getElementById("noteText").value = "";
-}
-
-// ============================
-// REMINDERS
-// ============================
-
-function addReminder() {
-    const reminder = document.getElementById("reminderText").value;
-
-    if (!reminder) return;
-
-    const li = document.createElement("li");
-    li.textContent = reminder;
-
-    document.getElementById("reminderList").appendChild(li);
-    document.getElementById("reminderText").value = "";
-}
-
-// Load timetable on page load
-createTimetable();
+document.addEventListener("DOMContentLoaded", createTimetable);
