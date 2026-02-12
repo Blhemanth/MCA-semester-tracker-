@@ -78,3 +78,16 @@ body {
     min-height: 40px;
     cursor: pointer;
 }
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px;
+    background: #f07f5a;
+    color: white;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background: #e06644;
+}

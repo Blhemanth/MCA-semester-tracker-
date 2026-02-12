@@ -1,68 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Academic Hub</title>
+    <title>Academic Hub - Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="sidebar">
-        <h2>Academic Hub</h2>
+<div class="sidebar">
+    <h2>Academic Hub</h2>
+    <a href="index.html">Dashboard</a>
+    <a href="timetable.html">Timetable</a>
+    <a href="exams.html">Exams</a>
+    <a href="notes.html">Notes</a>
+    <a href="reminders.html">Reminders</a>
+</div>
 
-        <button onclick="showSection('dashboard')">Dashboard</button>
-        <button onclick="showSection('timetable')">Timetable</button>
-        <button onclick="showSection('exams')">Exams</button>
-        <button onclick="showSection('notes')">Notes</button>
-        <button onclick="showSection('reminders')">Reminders</button>
-    </div>
-
-    <div class="content">
-
-        <!-- DASHBOARD -->
-        <div id="dashboard" class="section">
-            <h1>Dashboard</h1>
-            <p>Welcome to your Academic Control Center</p>
-        </div>
-
-        <!-- TIMETABLE -->
-        <div id="timetable" class="section hidden">
-            <h1>Weekly Planner</h1>
-            <div id="timetableGrid"></div>
-        </div>
-
-        <!-- EXAMS -->
-        <div id="exams" class="section hidden">
-            <h1>Exam Tracker</h1>
-
-            <input type="text" id="examName" placeholder="Exam Name">
-            <input type="number" id="marks" placeholder="Marks">
-            <button onclick="addExam()">Add</button>
-
-            <ul id="examList"></ul>
-        </div>
-
-        <!-- NOTES -->
-        <div id="notes" class="section hidden">
-            <h1>Notes</h1>
-
-            <textarea id="noteText" placeholder="Write note..."></textarea>
-            <br>
-            <button onclick="addNote()">Save</button>
-
-            <ul id="noteList"></ul>
-        </div>
-
-        <!-- REMINDERS -->
-        <div id="reminders" class="section hidden">
-            <h1>Reminders</h1>
-
-            <input type="text" id="reminderText" placeholder="Reminder">
-            <button onclick="addReminder()">Add</button>
-
-            <ul id="reminderList"></ul>
-        </div>
-
-    </div>
+<div class="content">
+    <h1>Dashboard</h1>
+    <p>Welcome to your Academic Control Center</p>
+</div>
 
 <script src="script.js"></script>
 </body>

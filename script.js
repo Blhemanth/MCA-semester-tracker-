@@ -27,7 +27,9 @@ const timeSlots = ["9-10", "10-11", "11-12", "1-2", "2-3"];
 function createTimetable() {
     const grid = document.getElementById("timetableGrid");
     if (!grid) return;
-
+    document.addEventListener("DOMContentLoaded", function() {
+    createTimetable();
+});
     grid.innerHTML = "";
 
     days.forEach(day => {
